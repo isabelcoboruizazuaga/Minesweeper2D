@@ -16,6 +16,7 @@ public class Generator : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 Instantiate(celda, new Vector2(i, j), Quaternion.identity);
+                
             }
         }
 
