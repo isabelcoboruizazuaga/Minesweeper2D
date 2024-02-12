@@ -697,12 +697,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 652746536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f38f79a7d91513499a327e8506ec282, type: 3}
+  m_Script: {fileID: 11500000, guid: 26213b1fd3aa4d94986dd2485a10b2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   celda: {fileID: 8444818213886119969, guid: 07011bdb9662c864e8a92408a5cd0119, type: 3}
   width: 9
   height: 9
+  nBombs: 0
 --- !u!1 &1163761246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1487,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1718028979943923755, guid: 07011bdb9662c864e8a92408a5cd0119, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 07011bdb9662c864e8a92408a5cd0119, type: 3}
 --- !u!224 &4750957433681035358 stripped
 RectTransform:
