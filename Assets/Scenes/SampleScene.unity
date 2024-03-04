@@ -205,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 10042103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 652746538}
+        m_TargetAssemblyTypeName: Generator, Assembly-CSharp
+        m_MethodName: HardMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &10042103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 203203593}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 652746538}
+        m_TargetAssemblyTypeName: Generator, Assembly-CSharp
+        m_MethodName: EasyMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &203203593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &364435579
 RectTransform:
   m_ObjectHideFlags: 0
@@ -525,7 +549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 381789891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 652746538}
+        m_TargetAssemblyTypeName: Generator, Assembly-CSharp
+        m_MethodName: MediumMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &381789891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,9 +737,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   celda: {fileID: 8444818213886119969, guid: 07011bdb9662c864e8a92408a5cd0119, type: 3}
-  width: 9
-  height: 9
+  width: 0
+  height: 0
   nBombs: 0
+  nTest: 0
+  canvas: {fileID: 1237460053}
+  winner: 1
 --- !u!1 &1163761246
 GameObject:
   m_ObjectHideFlags: 0
