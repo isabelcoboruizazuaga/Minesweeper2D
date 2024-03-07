@@ -8,6 +8,8 @@ public class Celda : MonoBehaviour
     [SerializeField] private TMP_Text tmpText;
     [SerializeField] private int number;
     [SerializeField] private bool revealed=false;
+    
+    private bool flagged=false;
 
     private void Start()
     {
@@ -73,6 +75,16 @@ public class Celda : MonoBehaviour
     {
         ClickCell();
     }
+    private void OnMouseOver()
+    {
+        if(Input.GetMouseButtonDown(1)){
+            if(!flagged) GetComponent<SpriteRenderer>().material.color = Color.blue;
+            else GetComponent<SpriteRenderer>().material.color = Color.white;
+
+            flagged = !flagged;
+        }
+    }
+
     public void ClickCell()
     {
         if (this.bomb)

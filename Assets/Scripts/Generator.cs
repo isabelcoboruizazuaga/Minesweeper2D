@@ -51,8 +51,8 @@ public class Generator : MonoBehaviour
 
     public void HardMap()
     {
-        width = 16;
-        height = 30;
+        width = 30;
+        height = 16;
         nBombs = 99;
 
         canvas.gameObject.SetActive(false);
@@ -135,19 +135,6 @@ public class Generator : MonoBehaviour
         //casilla inferior derecha, compruebo que no estoy en el limite derecho
         if (x < width - 1 && y > 0 && map[x + 1][y - 1].GetComponent<Celda>().isBomb())
             contador++;
-
-        //si queremos usar bucles
-        //for(int i = x-1; i<=x + 1; i++)
-        //{
-        //    for(int j = y-1; j >= y + 1; j++)
-        //    {
-        //        if(i>=0 && i< width && j>= 0 && j< height && i!=x && j != y)
-        //        {
-        //            if (map[i][j].GetComponent<Celda>().isBomb()) contador++;
-        //        }
-
-        //    }
-        //}
 
         return contador;
     }
