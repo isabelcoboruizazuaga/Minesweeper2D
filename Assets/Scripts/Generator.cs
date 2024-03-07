@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Generator : MonoBehaviour
 {
@@ -12,6 +15,9 @@ public class Generator : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private bool winner = true;
 
+    [SerializeField] private Canvas canvasFin;
+    [SerializeField] private TextMeshProUGUI textoVictoria;
+
     private GameObject[][] map;
 
     private int x, y;
@@ -19,35 +25,37 @@ public class Generator : MonoBehaviour
     void Start()
     {
         Instance = this;
+
+        canvasFin.gameObject.SetActive(false);
     }
 
     public void EasyMap()
     {
-        width = 5;
-        height = 5;
-        nBombs = 3;
+        width = 8;
+        height = 8;
+        nBombs = 10;
 
-        canvas.gameObject.active = false;
+        canvas.gameObject.SetActive(false);
         generateMap();
     }
 
     public void MediumMap()
     {
-        width = 6;
-        height = 6;
-        nBombs = 5;
+        width = 16;
+        height = 16;
+        nBombs = 40;
 
-        canvas.gameObject.active = false;
+        canvas.gameObject.SetActive(false);
         generateMap();
     }
 
     public void HardMap()
     {
-        width = 6;
-        height = 6;
-        nBombs = 8;
+        width = 16;
+        height = 30;
+        nBombs = 99;
 
-        canvas.gameObject.active = false;
+        canvas.gameObject.SetActive(false);
         generateMap();
     }
 
@@ -144,7 +152,72 @@ public class Generator : MonoBehaviour
         return contador;
     }
 
-    internal void addTest()
+
+
+    public void RevealEmptyCells(int x, int y)
+    {
+        int row = x;
+        int col = y;
+
+        Queue<Celda> queue = new Queue<Celda>();
+        queue.Enqueue(map[row][col].GetComponent<Celda>());
+
+        while (queue.Count > 0)
+        {
+            Celda currentCell = queue.Dequeue();
+            currentCell.setRevealed(true);
+
+            // Comprueba celdas vecinas
+            for (int r = row - 1; r <= row + 1; r++)
+            {
+                for (int c = col - 1; c <= col + 1; c++)
+                {
+                    if (r >= 0 && r < width && c >= 0 && c < height)
+                    {
+                        Celda neighbor = map[r][c].GetComponent<Celda>();
+                        if (!neighbor.isRevealed())
+                        {
+                            neighbor.ClickCell();
+                            queue.Enqueue(neighbor);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    public IEnumerator Ending(bool victory)
+    {
+        setWinner(victory);
+
+        yield return new WaitForSeconds(.5f);
+
+        //Se muestra todo el tablero
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                map[i][j].GetComponent<Celda>().Show();
+            }
+        }
+
+
+        yield return new WaitForSeconds(1);
+        if (!victory) textoVictoria.text = "Perdiste";
+        else textoVictoria.text = "Ganaste!";
+        canvasFin.gameObject.SetActive(true);
+
+    }
+
+
+    public void Restart()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+
+    }
+    internal void addTry()
     {
         nTest++;
     }
@@ -164,7 +237,7 @@ public class Generator : MonoBehaviour
         return nBombs;
     }
 
-    internal int getNTest()
+    internal int getNTries()
     {
         return nTest;
     }
